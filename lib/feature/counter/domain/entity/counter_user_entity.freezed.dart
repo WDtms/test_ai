@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,136 +9,150 @@ part of 'counter_user_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
 /// @nodoc
 mixin _$CounterUserEntity {
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
 
- String get id; String get name;
-/// Create a copy of CounterUserEntity
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$CounterUserEntityCopyWith<CounterUserEntity> get copyWith => _$CounterUserEntityCopyWithImpl<CounterUserEntity>(this as CounterUserEntity, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CounterUserEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,id,name);
-
-@override
-String toString() {
-  return 'CounterUserEntity(id: $id, name: $name)';
-}
-
-
+  /// Create a copy of CounterUserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CounterUserEntityCopyWith<CounterUserEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $CounterUserEntityCopyWith<$Res>  {
-  factory $CounterUserEntityCopyWith(CounterUserEntity value, $Res Function(CounterUserEntity) _then) = _$CounterUserEntityCopyWithImpl;
-@useResult
-$Res call({
- String id, String name
-});
-
-
-
-
+abstract class $CounterUserEntityCopyWith<$Res> {
+  factory $CounterUserEntityCopyWith(CounterUserEntity value, $Res Function(CounterUserEntity) then) =
+      _$CounterUserEntityCopyWithImpl<$Res, CounterUserEntity>;
+  @useResult
+  $Res call({String id, String name});
 }
+
 /// @nodoc
-class _$CounterUserEntityCopyWithImpl<$Res>
+class _$CounterUserEntityCopyWithImpl<$Res, $Val extends CounterUserEntity>
     implements $CounterUserEntityCopyWith<$Res> {
-  _$CounterUserEntityCopyWithImpl(this._self, this._then);
+  _$CounterUserEntityCopyWithImpl(this._value, this._then);
 
-  final CounterUserEntity _self;
-  final $Res Function(CounterUserEntity) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-/// Create a copy of CounterUserEntity
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,}) {
-  return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
-}
-
-
-/// @nodoc
-
-
-class _CounterUserEntity implements CounterUserEntity {
-  const _CounterUserEntity({required this.id, required this.name});
-  
-
-@override final  String id;
-@override final  String name;
-
-/// Create a copy of CounterUserEntity
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$CounterUserEntityCopyWith<_CounterUserEntity> get copyWith => __$CounterUserEntityCopyWithImpl<_CounterUserEntity>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CounterUserEntity&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,id,name);
-
-@override
-String toString() {
-  return 'CounterUserEntity(id: $id, name: $name)';
-}
-
-
+  /// Create a copy of CounterUserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(
+      _value.copyWith(
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+          )
+          as $Val,
+    );
+  }
 }
 
 /// @nodoc
-abstract mixin class _$CounterUserEntityCopyWith<$Res> implements $CounterUserEntityCopyWith<$Res> {
-  factory _$CounterUserEntityCopyWith(_CounterUserEntity value, $Res Function(_CounterUserEntity) _then) = __$CounterUserEntityCopyWithImpl;
-@override @useResult
-$Res call({
- String id, String name
-});
-
-
-
-
+abstract class _$$CounterUserEntityImplCopyWith<$Res> implements $CounterUserEntityCopyWith<$Res> {
+  factory _$$CounterUserEntityImplCopyWith(_$CounterUserEntityImpl value, $Res Function(_$CounterUserEntityImpl) then) =
+      __$$CounterUserEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id, String name});
 }
+
 /// @nodoc
-class __$CounterUserEntityCopyWithImpl<$Res>
-    implements _$CounterUserEntityCopyWith<$Res> {
-  __$CounterUserEntityCopyWithImpl(this._self, this._then);
+class __$$CounterUserEntityImplCopyWithImpl<$Res> extends _$CounterUserEntityCopyWithImpl<$Res, _$CounterUserEntityImpl>
+    implements _$$CounterUserEntityImplCopyWith<$Res> {
+  __$$CounterUserEntityImplCopyWithImpl(_$CounterUserEntityImpl _value, $Res Function(_$CounterUserEntityImpl) _then)
+    : super(_value, _then);
 
-  final _CounterUserEntity _self;
-  final $Res Function(_CounterUserEntity) _then;
-
-/// Create a copy of CounterUserEntity
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,}) {
-  return _then(_CounterUserEntity(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
+  /// Create a copy of CounterUserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+  }) {
+    return _then(
+      _$CounterUserEntityImpl(
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
 }
 
+/// @nodoc
 
+class _$CounterUserEntityImpl implements _CounterUserEntity {
+  const _$CounterUserEntityImpl({required this.id, required this.name});
+
+  @override
+  final String id;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'CounterUserEntity(id: $id, name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CounterUserEntityImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name);
+
+  /// Create a copy of CounterUserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CounterUserEntityImplCopyWith<_$CounterUserEntityImpl> get copyWith =>
+      __$$CounterUserEntityImplCopyWithImpl<_$CounterUserEntityImpl>(this, _$identity);
 }
 
-// dart format on
+abstract class _CounterUserEntity implements CounterUserEntity {
+  const factory _CounterUserEntity({required final String id, required final String name}) = _$CounterUserEntityImpl;
+
+  @override
+  String get id;
+  @override
+  String get name;
+
+  /// Create a copy of CounterUserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CounterUserEntityImplCopyWith<_$CounterUserEntityImpl> get copyWith => throw _privateConstructorUsedError;
+}

@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,133 +9,133 @@ part of 'counter_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
 /// @nodoc
 mixin _$CounterEntity {
+  int get value => throw _privateConstructorUsedError;
 
- int get value;
-/// Create a copy of CounterEntity
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$CounterEntityCopyWith<CounterEntity> get copyWith => _$CounterEntityCopyWithImpl<CounterEntity>(this as CounterEntity, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CounterEntity&&(identical(other.value, value) || other.value == value));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,value);
-
-@override
-String toString() {
-  return 'CounterEntity(value: $value)';
-}
-
-
+  /// Create a copy of CounterEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CounterEntityCopyWith<CounterEntity> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $CounterEntityCopyWith<$Res>  {
-  factory $CounterEntityCopyWith(CounterEntity value, $Res Function(CounterEntity) _then) = _$CounterEntityCopyWithImpl;
-@useResult
-$Res call({
- int value
-});
-
-
-
-
-}
-/// @nodoc
-class _$CounterEntityCopyWithImpl<$Res>
-    implements $CounterEntityCopyWith<$Res> {
-  _$CounterEntityCopyWithImpl(this._self, this._then);
-
-  final CounterEntity _self;
-  final $Res Function(CounterEntity) _then;
-
-/// Create a copy of CounterEntity
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? value = null,}) {
-  return _then(_self.copyWith(
-value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
-}
-
-}
-
-
-/// @nodoc
-
-
-class _CounterEntity implements CounterEntity {
-  const _CounterEntity({required this.value});
-  
-
-@override final  int value;
-
-/// Create a copy of CounterEntity
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$CounterEntityCopyWith<_CounterEntity> get copyWith => __$CounterEntityCopyWithImpl<_CounterEntity>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CounterEntity&&(identical(other.value, value) || other.value == value));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,value);
-
-@override
-String toString() {
-  return 'CounterEntity(value: $value)';
-}
-
-
+abstract class $CounterEntityCopyWith<$Res> {
+  factory $CounterEntityCopyWith(CounterEntity value, $Res Function(CounterEntity) then) =
+      _$CounterEntityCopyWithImpl<$Res, CounterEntity>;
+  @useResult
+  $Res call({int value});
 }
 
 /// @nodoc
-abstract mixin class _$CounterEntityCopyWith<$Res> implements $CounterEntityCopyWith<$Res> {
-  factory _$CounterEntityCopyWith(_CounterEntity value, $Res Function(_CounterEntity) _then) = __$CounterEntityCopyWithImpl;
-@override @useResult
-$Res call({
- int value
-});
+class _$CounterEntityCopyWithImpl<$Res, $Val extends CounterEntity> implements $CounterEntityCopyWith<$Res> {
+  _$CounterEntityCopyWithImpl(this._value, this._then);
 
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-
-
+  /// Create a copy of CounterEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(
+      _value.copyWith(
+            value: null == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
+  }
 }
+
 /// @nodoc
-class __$CounterEntityCopyWithImpl<$Res>
-    implements _$CounterEntityCopyWith<$Res> {
-  __$CounterEntityCopyWithImpl(this._self, this._then);
-
-  final _CounterEntity _self;
-  final $Res Function(_CounterEntity) _then;
-
-/// Create a copy of CounterEntity
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? value = null,}) {
-  return _then(_CounterEntity(
-value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
-as int,
-  ));
+abstract class _$$CounterEntityImplCopyWith<$Res> implements $CounterEntityCopyWith<$Res> {
+  factory _$$CounterEntityImplCopyWith(_$CounterEntityImpl value, $Res Function(_$CounterEntityImpl) then) =
+      __$$CounterEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int value});
 }
 
+/// @nodoc
+class __$$CounterEntityImplCopyWithImpl<$Res> extends _$CounterEntityCopyWithImpl<$Res, _$CounterEntityImpl>
+    implements _$$CounterEntityImplCopyWith<$Res> {
+  __$$CounterEntityImplCopyWithImpl(_$CounterEntityImpl _value, $Res Function(_$CounterEntityImpl) _then)
+    : super(_value, _then);
 
+  /// Create a copy of CounterEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(
+      _$CounterEntityImpl(
+        value: null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
+  }
 }
 
-// dart format on
+/// @nodoc
+
+class _$CounterEntityImpl implements _CounterEntity {
+  const _$CounterEntityImpl({required this.value});
+
+  @override
+  final int value;
+
+  @override
+  String toString() {
+    return 'CounterEntity(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CounterEntityImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  /// Create a copy of CounterEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CounterEntityImplCopyWith<_$CounterEntityImpl> get copyWith =>
+      __$$CounterEntityImplCopyWithImpl<_$CounterEntityImpl>(this, _$identity);
+}
+
+abstract class _CounterEntity implements CounterEntity {
+  const factory _CounterEntity({required final int value}) = _$CounterEntityImpl;
+
+  @override
+  int get value;
+
+  /// Create a copy of CounterEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CounterEntityImplCopyWith<_$CounterEntityImpl> get copyWith => throw _privateConstructorUsedError;
+}

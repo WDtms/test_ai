@@ -1,3 +1,4 @@
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:test_ai/core/data/repository/base_repository.dart';
 import 'package:test_ai/core/domain/entity/operation_request.dart';
 import 'package:test_ai/feature/counter/data/converter/counter_converter.dart';
@@ -23,26 +24,37 @@ final class CounterRepository extends BaseRepository implements ICounterReposito
 
   @override
   RequestOperation<CounterEntity> getCounter() => makeApiCall(() async {
-    final counterDto = await _counterApi.fetchCounter();
+    await Future.delayed(Duration(seconds: 2));
 
-    return _counterConverter.convert(counterDto);
+    // final counterDto = await _counterApi.fetchCounter();
+    //
+    // return _counterConverter.convert(counterDto);
+
+    return CounterEntity(value: 10);
   });
 
   @override
   RequestOperation<CounterEntity> updateCounter(int value) => makeApiCall(() async {
-    final counterDto = await _counterApi.updateCounter(
-      CounterUpdateRequestDto(
-        value: value,
-      ),
-    );
+    // final counterDto = await _counterApi.updateCounter(
+    //   CounterUpdateRequestDto(
+    //     value: value,
+    //   ),
+    // );
+    //
+    // return _counterConverter.convert(counterDto);
 
-    return _counterConverter.convert(counterDto);
+    return CounterEntity(value: value);
   });
 
   @override
   RequestOperation<CounterUserEntity> fetchUser() => makeApiCall(() async {
-    final counterUserDto = await _counterApi.fetchUser();
+    // final counterUserDto = await _counterApi.fetchUser();
+    //
+    // return _counterUserConverter.convert(counterUserDto);
 
-    return _counterUserConverter.convert(counterUserDto);
+    return CounterUserEntity(
+      id: 'id',
+      name: 'Aizek',
+    );
   });
 }

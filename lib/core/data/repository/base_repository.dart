@@ -6,7 +6,6 @@ typedef OperationWrapper<T> = Future<T> Function();
 abstract base class BaseRepository {
   const BaseRepository();
 
-  /// Выполнить API-запрос без кэширования
   RequestOperation<T> makeApiCall<T>(OperationWrapper<T> call) async {
     try {
       return ResultOk(await call());

@@ -9,7 +9,11 @@ part of 'counter_api.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _CounterApi implements CounterApi {
-  _CounterApi(this._dio, {this.baseUrl, this.errorLogger});
+  _CounterApi(
+    this._dio, {
+    this.baseUrl,
+    this.errorLogger,
+  });
 
   final Dio _dio;
 
@@ -24,14 +28,23 @@ class _CounterApi implements CounterApi {
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<CounterDto>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(
+            method: 'GET',
+            headers: _headers,
+            extra: _extra,
+          )
           .compose(
             _dio.options,
             '/counter',
             queryParameters: queryParameters,
             data: _data,
           )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+          .copyWith(
+            baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ),
+          ),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late CounterDto _value;
@@ -52,14 +65,23 @@ class _CounterApi implements CounterApi {
     final _data = <String, dynamic>{};
     _data.addAll(dto.toJson());
     final _options = _setStreamType<CounterDto>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+          )
           .compose(
             _dio.options,
             '/counter',
             queryParameters: queryParameters,
             data: _data,
           )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+          .copyWith(
+            baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ),
+          ),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late CounterDto _value;
@@ -79,14 +101,23 @@ class _CounterApi implements CounterApi {
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<CounterUserDto>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(
+            method: 'GET',
+            headers: _headers,
+            extra: _extra,
+          )
           .compose(
             _dio.options,
             '/counter/user',
             queryParameters: queryParameters,
             data: _data,
           )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+          .copyWith(
+            baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ),
+          ),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late CounterUserDto _value;
@@ -101,8 +132,7 @@ class _CounterApi implements CounterApi {
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes ||
-            requestOptions.responseType == ResponseType.stream)) {
+        !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {
@@ -112,7 +142,10 @@ class _CounterApi implements CounterApi {
     return requestOptions;
   }
 
-  String _combineBaseUrls(String dioBaseUrl, String? baseUrl) {
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
     if (baseUrl == null || baseUrl.trim().isEmpty) {
       return dioBaseUrl;
     }

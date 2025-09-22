@@ -23,9 +23,9 @@ sealed class Result<TData, TErr> {
 
   /// Do something base on result without changing.
   void when(
-      WhenFunction<TData> success, {
-        WhenFunction<TErr>? error,
-      }) {
+    WhenFunction<TData> success, {
+    WhenFunction<TErr>? error,
+  }) {
     return switch (this) {
       ResultOk<TData, TErr>(:final data) => success(data),
       ResultFailed<TData, TErr>(:final failure) => error?.call(failure),
@@ -42,9 +42,9 @@ sealed class Result<TData, TErr> {
 
   /// Conversion [ResultOk].
   R map<R>(
-      DataMapper<R, TData> success, {
-        required DataMapper<R, TErr> failed,
-      }) {
+    DataMapper<R, TData> success, {
+    required DataMapper<R, TErr> failed,
+  }) {
     return switch (this) {
       ResultOk<TData, TErr>(:final data) => success(data),
       ResultFailed<TData, TErr>(:final failure) => failed(failure),

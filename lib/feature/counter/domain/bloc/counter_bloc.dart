@@ -21,7 +21,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     required LogWriter logger,
   }) : _counterRepository = counterRepository,
        _logger = logger,
-       super(const CounterState.initial()) {
+       super(CounterState.initial()) {
     on<CounterEvent>(_onCounterEvent);
   }
 
@@ -40,7 +40,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   }
 
   Future<void> _onInit(CounterEvent event, Emitter<CounterState> emit) async {
-    emit(const CounterState.loading());
+    emit(CounterState.loading());
 
     final results = await (
       _counterRepository.fetchUser(),
@@ -66,16 +66,15 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     final state = this.state;
 
     switch (state) {
-      case _CounterInitial() || _CounterLoading() || _CounterFailure():
+      case CounterInitial() || CounterLoading() || CounterFailure():
         _logger.log('Unexpected state to start incrementing counter');
 
         return;
-      case _CounterIdle(:final curValue, :final user) ||
-          _CounterUpdating(:final curValue, :final user) ||
-          _CounterUpdateFailed(:final curValue, :final user):
-        return _tryToIncrementCounter(
+      case CounterData(:final curValue, :final user):
+        return _tryToUpdateCounter(
           emit: emit,
-          curValue: curValue,
+          oldValue: curValue,
+          newValue: curValue + 1,
           user: user,
         );
     }
@@ -85,32 +84,32 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     final state = this.state;
 
     switch (state) {
-      case _CounterInitial() || _CounterLoading() || _CounterFailure():
+      case CounterInitial() || CounterLoading() || CounterFailure():
         _logger.log('Unexpected state to start decrementing counter');
 
         return;
-      case _CounterIdle(:final curValue, :final user) ||
-          _CounterUpdating(:final curValue, :final user) ||
-          _CounterUpdateFailed(:final curValue, :final user):
-        return _tryToDecrementCounter(
+      case CounterData(:final curValue, :final user):
+        return _tryToUpdateCounter(
           emit: emit,
-          curValue: curValue,
+          oldValue: curValue,
+          newValue: curValue - 1,
           user: user,
         );
     }
   }
 
-  Future<void> _tryToIncrementCounter({
+  Future<void> _tryToUpdateCounter({
     required Emitter<CounterState> emit,
-    required int curValue,
+    required int newValue,
+    required int oldValue,
     required CounterUserEntity user,
   }) async {
-    final newCounter = curValue + 1;
+    emit(CounterState.updating(curValue: oldValue, user: user));
 
-    final result = await _counterRepository.updateCounter(newCounter);
+    final result = await _counterRepository.updateCounter(newValue);
 
     switch (result) {
-      case ResultOk<CounterEntity, Exception>(data :final newValue):
+      case ResultOk<CounterEntity, Exception>(data: final newValue):
         return emit(
           CounterState.idle(
             curValue: newValue.value,
@@ -120,35 +119,7 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
       case ResultFailed<CounterEntity, Exception>():
         return emit(
           CounterState.updateFailed(
-            curValue: curValue,
-            user: user,
-            reason: CounterUpdateFailedReason.somethingWentWrong,
-          ),
-        );
-    }
-  }
-
-  Future<void> _tryToDecrementCounter({
-    required Emitter<CounterState> emit,
-    required int curValue,
-    required CounterUserEntity user,
-  }) async {
-    final newCounter = curValue - 1;
-
-    final result = await _counterRepository.updateCounter(newCounter);
-
-    switch (result) {
-      case ResultOk<CounterEntity, Exception>(data :final newValue):
-        return emit(
-          CounterState.idle(
-            curValue: newValue.value,
-            user: user,
-          ),
-        );
-      case ResultFailed<CounterEntity, Exception>():
-        return emit(
-          CounterState.updateFailed(
-            curValue: curValue,
+            curValue: oldValue,
             user: user,
             reason: CounterUpdateFailedReason.somethingWentWrong,
           ),

@@ -1,0 +1,14 @@
+{
+  "@@locale": "ru",
+  "@segmentCommon": {
+    "---------": "---------",
+    "description": "Строки, не привязанные к конкретной функциональности"
+  },
+  "somethingWentWrong": "Упс! Что-то пошло не так.",
+  "tryAgain": "Попробовать еще раз",
+  "@segmentCounterScreen": {
+    "---------": "---------",
+    "description": "Строки экрана 'счетчик'"
+  },
+  "overEngineeredCounter": "Переусложненный счетчик"
+}

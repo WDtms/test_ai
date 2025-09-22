@@ -1,13 +1,16 @@
 import 'package:dio/dio.dart';
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:surf_logger/surf_logger.dart';
 import 'package:test_ai/core/di/assembly.dart';
 import 'package:test_ai/core/logger/strategies/debug_log_strategy.dart';
+import 'package:test_ai/feature/app/presentation/navigation/app_router.dart';
 import 'package:test_ai/feature/counter/data/converter/counter_converter.dart';
 import 'package:test_ai/feature/counter/data/converter/counter_user_converter.dart';
 import 'package:test_ai/feature/counter/data/repository/counter_repository.dart';
 import 'package:test_ai/feature/counter/domain/repository/i_counter_repository.dart';
 import 'package:test_ai/network/api/counter_api.dart';
 import 'package:logger/logger.dart' as native_logger;
+import 'package:test_ai/network/app_dio_configurator.dart';
 
 class AppAssembly extends Assembly {
   late final Registry<Dio> dioClient;
@@ -18,9 +21,21 @@ class AppAssembly extends Assembly {
 
   late final Registry<LogWriter> logger;
 
+  late final Registry<AppRouter> appRouter;
+
   AppAssembly() {
     dioClient = reg<Dio>(
-      () => Dio(),
+      () => AppDioConfigurator.create(
+        url: 'https://www.google.com',
+        interceptors: [
+          DioCacheInterceptor(
+            options: CacheOptions(
+              store: MemCacheStore(),
+              policy: CachePolicy.noCache,
+            ),
+          ),
+        ],
+      ),
     );
 
     counterApi = reg<CounterApi>(
@@ -53,6 +68,15 @@ class AppAssembly extends Assembly {
         return Logger.withStrategies(
           {debugStrategy},
         );
+      },
+    );
+
+    appRouter = reg<AppRouter>(
+      () {
+        return AppRouter();
+      },
+      onDispose: (it) {
+        it.dispose();
       },
     );
   }
