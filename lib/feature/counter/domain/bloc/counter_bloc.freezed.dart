@@ -415,7 +415,7 @@ mixin _$CounterState {
     required TResult Function() loading,
     required TResult Function(int curValue, CounterUserEntity user) idle,
     required TResult Function(int curValue, CounterUserEntity user) updating,
-    required TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user) updateFailed,
+    required TResult Function(int curValue, CounterUserEntity user) updateFailed,
     required TResult Function() failure,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -424,7 +424,7 @@ mixin _$CounterState {
     TResult? Function()? loading,
     TResult? Function(int curValue, CounterUserEntity user)? idle,
     TResult? Function(int curValue, CounterUserEntity user)? updating,
-    TResult? Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult? Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult? Function()? failure,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -433,7 +433,7 @@ mixin _$CounterState {
     TResult Function()? loading,
     TResult Function(int curValue, CounterUserEntity user)? idle,
     TResult Function(int curValue, CounterUserEntity user)? updating,
-    TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult Function()? failure,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
@@ -527,7 +527,7 @@ class _$CounterInitialImpl extends CounterInitial {
     required TResult Function() loading,
     required TResult Function(int curValue, CounterUserEntity user) idle,
     required TResult Function(int curValue, CounterUserEntity user) updating,
-    required TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user) updateFailed,
+    required TResult Function(int curValue, CounterUserEntity user) updateFailed,
     required TResult Function() failure,
   }) {
     return initial();
@@ -540,7 +540,7 @@ class _$CounterInitialImpl extends CounterInitial {
     TResult? Function()? loading,
     TResult? Function(int curValue, CounterUserEntity user)? idle,
     TResult? Function(int curValue, CounterUserEntity user)? updating,
-    TResult? Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult? Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult? Function()? failure,
   }) {
     return initial?.call();
@@ -553,7 +553,7 @@ class _$CounterInitialImpl extends CounterInitial {
     TResult Function()? loading,
     TResult Function(int curValue, CounterUserEntity user)? idle,
     TResult Function(int curValue, CounterUserEntity user)? updating,
-    TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -653,7 +653,7 @@ class _$CounterLoadingImpl extends CounterLoading {
     required TResult Function() loading,
     required TResult Function(int curValue, CounterUserEntity user) idle,
     required TResult Function(int curValue, CounterUserEntity user) updating,
-    required TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user) updateFailed,
+    required TResult Function(int curValue, CounterUserEntity user) updateFailed,
     required TResult Function() failure,
   }) {
     return loading();
@@ -666,7 +666,7 @@ class _$CounterLoadingImpl extends CounterLoading {
     TResult? Function()? loading,
     TResult? Function(int curValue, CounterUserEntity user)? idle,
     TResult? Function(int curValue, CounterUserEntity user)? updating,
-    TResult? Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult? Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult? Function()? failure,
   }) {
     return loading?.call();
@@ -679,7 +679,7 @@ class _$CounterLoadingImpl extends CounterLoading {
     TResult Function()? loading,
     TResult Function(int curValue, CounterUserEntity user)? idle,
     TResult Function(int curValue, CounterUserEntity user)? updating,
-    TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -829,7 +829,7 @@ class _$CounterIdleImpl extends CounterIdle {
     required TResult Function() loading,
     required TResult Function(int curValue, CounterUserEntity user) idle,
     required TResult Function(int curValue, CounterUserEntity user) updating,
-    required TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user) updateFailed,
+    required TResult Function(int curValue, CounterUserEntity user) updateFailed,
     required TResult Function() failure,
   }) {
     return idle(curValue, user);
@@ -842,7 +842,7 @@ class _$CounterIdleImpl extends CounterIdle {
     TResult? Function()? loading,
     TResult? Function(int curValue, CounterUserEntity user)? idle,
     TResult? Function(int curValue, CounterUserEntity user)? updating,
-    TResult? Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult? Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult? Function()? failure,
   }) {
     return idle?.call(curValue, user);
@@ -855,7 +855,7 @@ class _$CounterIdleImpl extends CounterIdle {
     TResult Function()? loading,
     TResult Function(int curValue, CounterUserEntity user)? idle,
     TResult Function(int curValue, CounterUserEntity user)? updating,
-    TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -1013,7 +1013,7 @@ class _$CounterUpdatingImpl extends CounterUpdating {
     required TResult Function() loading,
     required TResult Function(int curValue, CounterUserEntity user) idle,
     required TResult Function(int curValue, CounterUserEntity user) updating,
-    required TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user) updateFailed,
+    required TResult Function(int curValue, CounterUserEntity user) updateFailed,
     required TResult Function() failure,
   }) {
     return updating(curValue, user);
@@ -1026,7 +1026,7 @@ class _$CounterUpdatingImpl extends CounterUpdating {
     TResult? Function()? loading,
     TResult? Function(int curValue, CounterUserEntity user)? idle,
     TResult? Function(int curValue, CounterUserEntity user)? updating,
-    TResult? Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult? Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult? Function()? failure,
   }) {
     return updating?.call(curValue, user);
@@ -1039,7 +1039,7 @@ class _$CounterUpdatingImpl extends CounterUpdating {
     TResult Function()? loading,
     TResult Function(int curValue, CounterUserEntity user)? idle,
     TResult Function(int curValue, CounterUserEntity user)? updating,
-    TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -1114,7 +1114,7 @@ abstract class _$$CounterUpdateFailedImplCopyWith<$Res> {
     $Res Function(_$CounterUpdateFailedImpl) then,
   ) = __$$CounterUpdateFailedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int curValue, CounterUpdateFailedReason reason, CounterUserEntity user});
+  $Res call({int curValue, CounterUserEntity user});
 
   $CounterUserEntityCopyWith<$Res> get user;
 }
@@ -1133,7 +1133,6 @@ class __$$CounterUpdateFailedImplCopyWithImpl<$Res> extends _$CounterStateCopyWi
   @override
   $Res call({
     Object? curValue = null,
-    Object? reason = null,
     Object? user = null,
   }) {
     return _then(
@@ -1142,10 +1141,6 @@ class __$$CounterUpdateFailedImplCopyWithImpl<$Res> extends _$CounterStateCopyWi
             ? _value.curValue
             : curValue // ignore: cast_nullable_to_non_nullable
                   as int,
-        reason: null == reason
-            ? _value.reason
-            : reason // ignore: cast_nullable_to_non_nullable
-                  as CounterUpdateFailedReason,
         user: null == user
             ? _value.user
             : user // ignore: cast_nullable_to_non_nullable
@@ -1168,18 +1163,16 @@ class __$$CounterUpdateFailedImplCopyWithImpl<$Res> extends _$CounterStateCopyWi
 /// @nodoc
 
 class _$CounterUpdateFailedImpl extends CounterUpdateFailed {
-  const _$CounterUpdateFailedImpl({required this.curValue, required this.reason, required this.user}) : super._();
+  const _$CounterUpdateFailedImpl({required this.curValue, required this.user}) : super._();
 
   @override
   final int curValue;
-  @override
-  final CounterUpdateFailedReason reason;
   @override
   final CounterUserEntity user;
 
   @override
   String toString() {
-    return 'CounterState.updateFailed(curValue: $curValue, reason: $reason, user: $user)';
+    return 'CounterState.updateFailed(curValue: $curValue, user: $user)';
   }
 
   @override
@@ -1188,12 +1181,11 @@ class _$CounterUpdateFailedImpl extends CounterUpdateFailed {
         (other.runtimeType == runtimeType &&
             other is _$CounterUpdateFailedImpl &&
             (identical(other.curValue, curValue) || other.curValue == curValue) &&
-            (identical(other.reason, reason) || other.reason == reason) &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, curValue, reason, user);
+  int get hashCode => Object.hash(runtimeType, curValue, user);
 
   /// Create a copy of CounterState
   /// with the given fields replaced by the non-null parameter values.
@@ -1210,10 +1202,10 @@ class _$CounterUpdateFailedImpl extends CounterUpdateFailed {
     required TResult Function() loading,
     required TResult Function(int curValue, CounterUserEntity user) idle,
     required TResult Function(int curValue, CounterUserEntity user) updating,
-    required TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user) updateFailed,
+    required TResult Function(int curValue, CounterUserEntity user) updateFailed,
     required TResult Function() failure,
   }) {
-    return updateFailed(curValue, reason, user);
+    return updateFailed(curValue, user);
   }
 
   @override
@@ -1223,10 +1215,10 @@ class _$CounterUpdateFailedImpl extends CounterUpdateFailed {
     TResult? Function()? loading,
     TResult? Function(int curValue, CounterUserEntity user)? idle,
     TResult? Function(int curValue, CounterUserEntity user)? updating,
-    TResult? Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult? Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult? Function()? failure,
   }) {
-    return updateFailed?.call(curValue, reason, user);
+    return updateFailed?.call(curValue, user);
   }
 
   @override
@@ -1236,12 +1228,12 @@ class _$CounterUpdateFailedImpl extends CounterUpdateFailed {
     TResult Function()? loading,
     TResult Function(int curValue, CounterUserEntity user)? idle,
     TResult Function(int curValue, CounterUserEntity user)? updating,
-    TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (updateFailed != null) {
-      return updateFailed(curValue, reason, user);
+      return updateFailed(curValue, user);
     }
     return orElse();
   }
@@ -1291,15 +1283,11 @@ class _$CounterUpdateFailedImpl extends CounterUpdateFailed {
 }
 
 abstract class CounterUpdateFailed extends CounterState implements CounterData {
-  const factory CounterUpdateFailed({
-    required final int curValue,
-    required final CounterUpdateFailedReason reason,
-    required final CounterUserEntity user,
-  }) = _$CounterUpdateFailedImpl;
+  const factory CounterUpdateFailed({required final int curValue, required final CounterUserEntity user}) =
+      _$CounterUpdateFailedImpl;
   const CounterUpdateFailed._() : super._();
 
   int get curValue;
-  CounterUpdateFailedReason get reason;
   CounterUserEntity get user;
 
   /// Create a copy of CounterState
@@ -1349,7 +1337,7 @@ class _$CounterFailureImpl extends CounterFailure {
     required TResult Function() loading,
     required TResult Function(int curValue, CounterUserEntity user) idle,
     required TResult Function(int curValue, CounterUserEntity user) updating,
-    required TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user) updateFailed,
+    required TResult Function(int curValue, CounterUserEntity user) updateFailed,
     required TResult Function() failure,
   }) {
     return failure();
@@ -1362,7 +1350,7 @@ class _$CounterFailureImpl extends CounterFailure {
     TResult? Function()? loading,
     TResult? Function(int curValue, CounterUserEntity user)? idle,
     TResult? Function(int curValue, CounterUserEntity user)? updating,
-    TResult? Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult? Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult? Function()? failure,
   }) {
     return failure?.call();
@@ -1375,7 +1363,7 @@ class _$CounterFailureImpl extends CounterFailure {
     TResult Function()? loading,
     TResult Function(int curValue, CounterUserEntity user)? idle,
     TResult Function(int curValue, CounterUserEntity user)? updating,
-    TResult Function(int curValue, CounterUpdateFailedReason reason, CounterUserEntity user)? updateFailed,
+    TResult Function(int curValue, CounterUserEntity user)? updateFailed,
     TResult Function()? failure,
     required TResult orElse(),
   }) {
@@ -1432,4 +1420,218 @@ class _$CounterFailureImpl extends CounterFailure {
 abstract class CounterFailure extends CounterState {
   const factory CounterFailure() = _$CounterFailureImpl;
   const CounterFailure._() : super._();
+}
+
+/// @nodoc
+mixin _$CounterAction {
+  CounterUpdateFailedReason get reason => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CounterUpdateFailedReason reason) showErrorOnUpdating,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CounterUpdateFailedReason reason)? showErrorOnUpdating,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CounterUpdateFailedReason reason)? showErrorOnUpdating,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CounterShowErrorOnUpdating value) showErrorOnUpdating,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CounterShowErrorOnUpdating value)? showErrorOnUpdating,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CounterShowErrorOnUpdating value)? showErrorOnUpdating,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+
+  /// Create a copy of CounterAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CounterActionCopyWith<CounterAction> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CounterActionCopyWith<$Res> {
+  factory $CounterActionCopyWith(CounterAction value, $Res Function(CounterAction) then) =
+      _$CounterActionCopyWithImpl<$Res, CounterAction>;
+  @useResult
+  $Res call({CounterUpdateFailedReason reason});
+}
+
+/// @nodoc
+class _$CounterActionCopyWithImpl<$Res, $Val extends CounterAction> implements $CounterActionCopyWith<$Res> {
+  _$CounterActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of CounterAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reason = null,
+  }) {
+    return _then(
+      _value.copyWith(
+            reason: null == reason
+                ? _value.reason
+                : reason // ignore: cast_nullable_to_non_nullable
+                      as CounterUpdateFailedReason,
+          )
+          as $Val,
+    );
+  }
+}
+
+/// @nodoc
+abstract class _$$CounterShowErrorOnUpdatingImplCopyWith<$Res> implements $CounterActionCopyWith<$Res> {
+  factory _$$CounterShowErrorOnUpdatingImplCopyWith(
+    _$CounterShowErrorOnUpdatingImpl value,
+    $Res Function(_$CounterShowErrorOnUpdatingImpl) then,
+  ) = __$$CounterShowErrorOnUpdatingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({CounterUpdateFailedReason reason});
+}
+
+/// @nodoc
+class __$$CounterShowErrorOnUpdatingImplCopyWithImpl<$Res>
+    extends _$CounterActionCopyWithImpl<$Res, _$CounterShowErrorOnUpdatingImpl>
+    implements _$$CounterShowErrorOnUpdatingImplCopyWith<$Res> {
+  __$$CounterShowErrorOnUpdatingImplCopyWithImpl(
+    _$CounterShowErrorOnUpdatingImpl _value,
+    $Res Function(_$CounterShowErrorOnUpdatingImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of CounterAction
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reason = null,
+  }) {
+    return _then(
+      _$CounterShowErrorOnUpdatingImpl(
+        reason: null == reason
+            ? _value.reason
+            : reason // ignore: cast_nullable_to_non_nullable
+                  as CounterUpdateFailedReason,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$CounterShowErrorOnUpdatingImpl implements _CounterShowErrorOnUpdating {
+  const _$CounterShowErrorOnUpdatingImpl({required this.reason});
+
+  @override
+  final CounterUpdateFailedReason reason;
+
+  @override
+  String toString() {
+    return 'CounterAction.showErrorOnUpdating(reason: $reason)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CounterShowErrorOnUpdatingImpl &&
+            (identical(other.reason, reason) || other.reason == reason));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reason);
+
+  /// Create a copy of CounterAction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CounterShowErrorOnUpdatingImplCopyWith<_$CounterShowErrorOnUpdatingImpl> get copyWith =>
+      __$$CounterShowErrorOnUpdatingImplCopyWithImpl<_$CounterShowErrorOnUpdatingImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(CounterUpdateFailedReason reason) showErrorOnUpdating,
+  }) {
+    return showErrorOnUpdating(reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(CounterUpdateFailedReason reason)? showErrorOnUpdating,
+  }) {
+    return showErrorOnUpdating?.call(reason);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(CounterUpdateFailedReason reason)? showErrorOnUpdating,
+    required TResult orElse(),
+  }) {
+    if (showErrorOnUpdating != null) {
+      return showErrorOnUpdating(reason);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CounterShowErrorOnUpdating value) showErrorOnUpdating,
+  }) {
+    return showErrorOnUpdating(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CounterShowErrorOnUpdating value)? showErrorOnUpdating,
+  }) {
+    return showErrorOnUpdating?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CounterShowErrorOnUpdating value)? showErrorOnUpdating,
+    required TResult orElse(),
+  }) {
+    if (showErrorOnUpdating != null) {
+      return showErrorOnUpdating(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CounterShowErrorOnUpdating implements CounterAction {
+  const factory _CounterShowErrorOnUpdating({required final CounterUpdateFailedReason reason}) =
+      _$CounterShowErrorOnUpdatingImpl;
+
+  @override
+  CounterUpdateFailedReason get reason;
+
+  /// Create a copy of CounterAction
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CounterShowErrorOnUpdatingImplCopyWith<_$CounterShowErrorOnUpdatingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

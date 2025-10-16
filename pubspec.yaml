@@ -46,6 +46,7 @@ dependencies:
   dio_cache_interceptor: 4.0.3
   intl: 0.20.2
   theme_tailor_annotation: 3.0.1
+  in_app_purchase: 3.2.3
 
 dev_dependencies:
   flutter_test:

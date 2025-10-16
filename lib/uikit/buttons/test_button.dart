@@ -65,6 +65,8 @@ class TestButton extends StatelessWidget {
       TestButtonSize.small => 32.0,
     };
 
+    final int a;
+
     return SizedBox(
       height: height,
       child: ElevatedButton(

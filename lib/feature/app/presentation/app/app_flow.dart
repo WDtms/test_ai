@@ -11,6 +11,11 @@ class AppFlow extends StatelessWidget {
     return AssemblyProvider(
       create: () => AppAssembly(),
       builder: (ctx) => App(),
+      placeholderBuilder: (_) => SizedBox.expand(
+        child: Container(
+          color: Colors.green,
+        ),
+      ),
     );
   }
 }

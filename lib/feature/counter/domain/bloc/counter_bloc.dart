@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:surf_logger/surf_logger.dart';
+import 'package:test_ai/core/domain/bloc/bloc_w_action.dart';
 import 'package:test_ai/core/domain/entity/result.dart';
 import 'package:test_ai/feature/counter/domain/entity/counter_entity.dart';
 import 'package:test_ai/feature/counter/domain/entity/counter_user_entity.dart';
@@ -10,9 +11,11 @@ part 'counter_event.dart';
 
 part 'counter_state.dart';
 
+part 'counter_action.dart';
+
 part 'counter_bloc.freezed.dart';
 
-class CounterBloc extends Bloc<CounterEvent, CounterState> {
+final class CounterBloc extends BlocWAction<CounterEvent, CounterState, CounterAction> {
   final ICounterRepository _counterRepository;
   final LogWriter _logger;
 
@@ -66,10 +69,6 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     final state = this.state;
 
     switch (state) {
-      case CounterInitial() || CounterLoading() || CounterFailure():
-        _logger.log('Unexpected state to start incrementing counter');
-
-        return;
       case CounterData(:final curValue, :final user):
         return _tryToUpdateCounter(
           emit: emit,
@@ -77,6 +76,10 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
           newValue: curValue + 1,
           user: user,
         );
+      default:
+        _logger.log('Unexpected state to start incrementing counter: ${state.runtimeType}');
+
+        return;
     }
   }
 
@@ -84,10 +87,6 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     final state = this.state;
 
     switch (state) {
-      case CounterInitial() || CounterLoading() || CounterFailure():
-        _logger.log('Unexpected state to start decrementing counter');
-
-        return;
       case CounterData(:final curValue, :final user):
         return _tryToUpdateCounter(
           emit: emit,
@@ -95,6 +94,10 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
           newValue: curValue - 1,
           user: user,
         );
+      default:
+        _logger.log('Unexpected state to start incrementing counter: ${state.runtimeType}');
+
+        return;
     }
   }
 
@@ -109,19 +112,20 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
     final result = await _counterRepository.updateCounter(newValue);
 
     switch (result) {
-      case ResultOk<CounterEntity, Exception>(data: final newValue):
+      case ResultOk<CounterEntity>(data: final newValue):
         return emit(
           CounterState.idle(
             curValue: newValue.value,
             user: user,
           ),
         );
-      case ResultFailed<CounterEntity, Exception>():
+      case ResultFailed<CounterEntity>():
+        action(CounterAction.showErrorOnUpdating(reason: CounterUpdateFailedReason.somethingWentWrong));
+
         return emit(
           CounterState.updateFailed(
             curValue: oldValue,
             user: user,
-            reason: CounterUpdateFailedReason.somethingWentWrong,
           ),
         );
     }

@@ -23,14 +23,11 @@ sealed class CounterState with _$CounterState {
   @Implements<CounterData>()
   const factory CounterState.updateFailed({
     required int curValue,
-    required CounterUpdateFailedReason reason,
     required CounterUserEntity user,
   }) = CounterUpdateFailed;
 
   const factory CounterState.failure() = CounterFailure;
 }
-
-enum CounterUpdateFailedReason { validating, somethingWentWrong }
 
 sealed class CounterData implements CounterState {
   final int curValue;

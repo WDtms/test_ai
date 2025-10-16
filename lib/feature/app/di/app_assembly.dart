@@ -4,8 +4,6 @@ import 'package:surf_logger/surf_logger.dart';
 import 'package:test_ai/core/di/assembly.dart';
 import 'package:test_ai/core/logger/strategies/debug_log_strategy.dart';
 import 'package:test_ai/feature/app/presentation/navigation/app_router.dart';
-import 'package:test_ai/feature/counter/data/converter/counter_converter.dart';
-import 'package:test_ai/feature/counter/data/converter/counter_user_converter.dart';
 import 'package:test_ai/feature/counter/data/repository/counter_repository.dart';
 import 'package:test_ai/feature/counter/domain/repository/i_counter_repository.dart';
 import 'package:test_ai/network/api/counter_api.dart';
@@ -44,19 +42,6 @@ class AppAssembly extends Assembly {
       ),
     );
 
-    counterRepository = reg<ICounterRepository>(
-      () {
-        final counterConverter = CounterConverter();
-        final counterUserConverter = CounterUserConverter();
-
-        return CounterRepository(
-          counterApi: counterApi.get,
-          counterConverter: counterConverter,
-          counterUserConverter: counterUserConverter,
-        );
-      },
-    );
-
     logger = reg<LogWriter>(
       () {
         final debugStrategy = DebugLogStrategy(
@@ -67,6 +52,15 @@ class AppAssembly extends Assembly {
 
         return Logger.withStrategies(
           {debugStrategy},
+        );
+      },
+    );
+
+    counterRepository = reg<ICounterRepository>(
+      () {
+        return CounterRepository(
+          counterApi: counterApi.get,
+          logWriter: logger.get,
         );
       },
     );

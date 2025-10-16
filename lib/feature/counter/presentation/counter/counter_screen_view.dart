@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:test_ai/core/domain/bloc/state_streamable_builder.dart';
+import 'package:test_ai/core/presentation/bloc/state_streamable_builder.dart';
 import 'package:test_ai/feature/counter/domain/bloc/counter_bloc.dart';
-import 'package:test_ai/feature/counter/presentation/counter/counter_screen_view_model.dart';
+import 'package:test_ai/feature/counter/presentation/counter/counter_screen_view_controller.dart';
 import 'package:test_ai/l10n/app_localizations_x.dart';
 import 'package:test_ai/uikit/buttons/enums/test_button_size.dart';
 import 'package:test_ai/uikit/buttons/enums/test_button_state.dart';
@@ -12,9 +12,9 @@ import 'package:test_ai/uikit/loader/full_screen_loader.dart';
 import 'package:test_ai/uikit/theme/test_typography.dart';
 
 class CounterScreenView extends StatelessWidget {
-  const CounterScreenView({required this.wm, super.key});
+  const CounterScreenView({required this.vc, super.key});
 
-  final ICounterScreenViewModel wm;
+  final ICounterScreenViewController vc;
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,11 @@ class CounterScreenView extends StatelessWidget {
       body: Stack(
         children: [
           StateStreamableBuilder(
-            state: wm.counterStateProvider,
+            state: vc.counterStateProvider,
             builder: (_, state) => switch (state) {
               CounterInitial() || CounterLoading() => FullScreenLoaderWidget(),
-              CounterData() => _CounterSuccessBody(successState: state, wm: wm),
-              CounterFailure() => FullScreenErrorWidget(onTryAgain: wm.tryLoadInfoAgain),
+              CounterData() => _CounterSuccessBody(successState: state, vc: vc),
+              CounterFailure() => FullScreenErrorWidget(onTryAgain: vc.tryLoadInfoAgain),
             },
           ),
         ],
@@ -39,10 +39,10 @@ class CounterScreenView extends StatelessWidget {
 }
 
 class _CounterSuccessBody extends StatelessWidget {
-  const _CounterSuccessBody({required this.successState, required this.wm});
+  const _CounterSuccessBody({required this.successState, required this.vc});
 
   final CounterData successState;
-  final ICounterScreenViewModel wm;
+  final ICounterScreenViewController vc;
 
   @override
   Widget build(BuildContext context) {
@@ -65,11 +65,11 @@ class _CounterSuccessBody extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _ControlButton(
-                    onPressed: wm.decrementCounter,
+                    onPressed: vc.decrementCounter,
                     icon: Icons.remove,
                   ),
                   _ControlButton(
-                    onPressed: wm.incrementCounter,
+                    onPressed: vc.incrementCounter,
                     icon: Icons.add,
                   ),
                 ],

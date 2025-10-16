@@ -1,5 +1,7 @@
 // ignore_for_file: prefer-correct-callback-field-name
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_ai/core/di/assembly.dart';
@@ -29,7 +31,7 @@ class AssemblyProvider<T extends Assembly> extends StatefulWidget {
 class _AssemblyProviderState<T extends Assembly> extends State<AssemblyProvider<T>> {
   late final T _assembly;
 
-  late final Future<void> _assemblyInit;
+  late final FutureOr<void> _assemblyInit;
 
   @override
   void initState() {
@@ -47,23 +49,30 @@ class _AssemblyProviderState<T extends Assembly> extends State<AssemblyProvider<
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<void>(
-      future: _assemblyInit,
-      builder: (_, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return Provider(
-            create: (_) => _assembly,
-            child: widget.builder(context),
-          );
-        }
-
-        return widget.placeholderBuilder?.call(context) ??
-            SizedBox.expand(
-              child: Container(
-                color: Colors.white,
-              ),
+    if (_assemblyInit is Future) {
+      return FutureBuilder<void>(
+        future: _assemblyInit,
+        builder: (_, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Provider(
+              create: (_) => _assembly,
+              child: widget.builder(context),
             );
-      },
+          }
+
+          return widget.placeholderBuilder?.call(context) ??
+              SizedBox.expand(
+                child: Container(
+                  color: Colors.red,
+                ),
+              );
+        },
+      );
+    }
+
+    return Provider(
+      create: (_) => _assembly,
+      child: widget.builder(context),
     );
   }
 }

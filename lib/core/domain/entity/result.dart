@@ -1,8 +1,8 @@
-/// Type for data mapper function.
-typedef DataMapper<R, TData> = R Function(TData value);
+import 'failure/failure.dart';
 
-/// Type for function that do something with result without changing.
-typedef WhenFunction<T> = void Function(T value);
+typedef FutureResult<T> = Future<Result<T>>;
+
+typedef StreamResult<T> = Stream<Result<T>>;
 
 /// {@template result.class}
 /// Result of a function execution.
@@ -11,7 +11,7 @@ typedef WhenFunction<T> = void Function(T value);
 ///
 /// [Result.failed] - named constructor for Result with error - [ResultFailed].
 /// {@endtemplate}
-sealed class Result<TData, TErr> {
+sealed class Result<TData> {
   /// {@macro result.class}
   const Result();
 
@@ -19,41 +19,57 @@ sealed class Result<TData, TErr> {
   const factory Result.ok(TData data) = ResultOk;
 
   /// {@macro result.class}
-  const factory Result.failed(TErr failure) = ResultFailed;
+  const factory Result.failed(Failure failure, StackTrace stackTrace) = ResultFailed;
 
-  /// Do something base on result without changing.
-  void when(
-    WhenFunction<TData> success, {
-    WhenFunction<TErr>? error,
-  }) {
+  /// Returns `true` if the result is [ResultOk].
+  bool get isOk => this is ResultOk<TData>;
+
+  /// Returns `true` if the result is [ResultFailed].
+  bool get isFailed => this is ResultFailed<TData>;
+
+  /// If the result is [ResultOk] unwraps it, otherwise returns null.
+  TData? get dataOrNull {
     return switch (this) {
-      ResultOk<TData, TErr>(:final data) => success(data),
-      ResultFailed<TData, TErr>(:final failure) => error?.call(failure),
+      ResultOk<TData>(:final data) => data,
+      ResultFailed<TData>() => null,
     };
   }
 
-  /// Conversion [ResultOk].
-  Result<R, TErr> mapResult<R>(DataMapper<R, TData> mapper) {
+  /// Convert [ResultOk].
+  Result<R> mapOk<R>(R Function(TData value) mapper) {
     return switch (this) {
-      ResultOk<TData, TErr>(:final data) => Result.ok(mapper(data)),
-      ResultFailed<TData, TErr>(:final failure) => Result.failed(failure),
+      ResultOk<TData>(:final data) => Result.ok(mapper(data)),
+      ResultFailed<TData>(:final failure, :final stackTrace) => Result.failed(failure, stackTrace),
     };
   }
 
-  /// Conversion [ResultOk].
-  R map<R>(
-    DataMapper<R, TData> success, {
-    required DataMapper<R, TErr> failed,
-  }) {
+  /// Unwraps result as [TData].
+  ///
+  /// Rethrows an exception if the result is [ResultFailed].
+  ///
+  /// Designed for cases when you are using repository calls outside of the business logic
+  /// and it is ok to rethrow the exception and catch it in the root level handler.
+  TData unwrap() {
     return switch (this) {
-      ResultOk<TData, TErr>(:final data) => success(data),
-      ResultFailed<TData, TErr>(:final failure) => failed(failure),
+      ResultOk<TData>(:final data) => data,
+      ResultFailed<TData>(:final failure, :final stackTrace) => Error.throwWithStackTrace(
+        failure,
+        stackTrace,
+      ),
+    };
+  }
+
+  /// If the result is [ResultOk] unwraps it, otherwise returns [defaultValue].
+  TData unwrapOr(TData defaultValue) {
+    return switch (this) {
+      ResultOk<TData>(:final data) => data,
+      ResultFailed<TData>() => defaultValue,
     };
   }
 }
 
 /// {@macro result.class}
-final class ResultOk<TData, TErr> extends Result<TData, TErr> {
+final class ResultOk<TData> extends Result<TData> {
   /// Successful Result data.
   final TData data;
 
@@ -62,10 +78,13 @@ final class ResultOk<TData, TErr> extends Result<TData, TErr> {
 }
 
 /// {@macro result.class}
-final class ResultFailed<TData, TErr> extends Result<TData, TErr> {
-  /// Failed Result error.
-  final TErr failure;
+final class ResultFailed<TData> extends Result<TData> {
+  /// Error.
+  final Failure failure;
+
+  /// Stack Trace.
+  final StackTrace stackTrace;
 
   /// {@macro result.class}
-  const ResultFailed(this.failure);
+  const ResultFailed(this.failure, this.stackTrace);
 }

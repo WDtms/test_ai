@@ -8,12 +8,24 @@ typedef Factory<T> = FutureOr<T> Function();
 class Assembly {
   final Set<Registry<Object?>> registries = {};
 
-  Future<void> init() async {
+  FutureOr<void> init() {
+    Future<void>? chain;
+
     for (final registry in registries) {
-      await registry.init();
+      final r = registry.init();
+
+      if (r is Future<void>) {
+        chain = (chain == null) ? r : chain.then((_) => r);
+      }
     }
 
-    onInitialized();
+    void afterAll() => onInitialized();
+
+    if (chain != null) {
+      return chain.then((_) => afterAll());
+    } else {
+      afterAll();
+    }
   }
 
   Future<void> dispose() async {
@@ -63,8 +75,17 @@ class Registry<T> {
     required this.onDispose,
   });
 
-  FutureOr<void> init() async {
-    _value = await onCreate();
-    _isInitialized = true;
+  FutureOr<void> init() {
+    final result = onCreate();
+
+    if (result is Future<T>) {
+      return result.then((v) {
+        _value = v;
+        _isInitialized = true;
+      });
+    } else {
+      _value = result;
+      _isInitialized = true;
+    }
   }
 }
